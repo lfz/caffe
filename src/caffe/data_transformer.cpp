@@ -85,8 +85,10 @@ void DataTransformer<Dtype>::Transform(const Datum& datum,
     width = crop_size;
     // We only do random crop when we do training.
     if (phase_ == TRAIN) {
-      h_off = Rand(datum_height - crop_size + 1);
-      w_off = Rand(datum_width - crop_size + 1);
+     // h_off = Rand(datum_height - crop_size + 1);
+     //  w_off = Rand(datum_width - crop_size + 1);
+      h_off = (datum_height - crop_size) / 2;
+      w_off = (datum_width - crop_size) / 2;
     } else {
       h_off = (datum_height - crop_size) / 2;
       w_off = (datum_width - crop_size) / 2;
